@@ -1,6 +1,7 @@
 package com.drstrange.drstrange.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table (name = "user")
@@ -84,5 +85,9 @@ public class User {
   public void setNickname(String nickname) {
     this.nickname = nickname;
   }
+  @OneToMany
+  @JoinColumn(name = "author")
+  private List<Article> articles;
+  
 }
 

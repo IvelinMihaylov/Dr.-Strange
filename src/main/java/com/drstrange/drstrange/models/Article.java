@@ -1,6 +1,7 @@
 package com.drstrange.drstrange.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table (name = "article")
@@ -71,5 +72,9 @@ public class Article {
   public void setImage(byte[] image) {
     this.image = image;
   }
+
+  @ManyToOne
+  @JoinColumn (name = "userID")
+  private User user;
 }
 
