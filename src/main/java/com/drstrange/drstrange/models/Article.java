@@ -1,5 +1,7 @@
 package com.drstrange.drstrange.models;
 
+import javax.persistence.*;
+
 @Entity
 @Table (name = "article")
 public class Article {
