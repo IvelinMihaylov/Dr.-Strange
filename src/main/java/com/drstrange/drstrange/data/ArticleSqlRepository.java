@@ -2,9 +2,11 @@ package com.drstrange.drstrange.data;
 
 import com.drstrange.drstrange.data.base.ArticleRepository;
 import com.drstrange.drstrange.models.Article;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class ArticleSqlRepository implements ArticleRepository {
     @Override
     public Article findById(int id) {
