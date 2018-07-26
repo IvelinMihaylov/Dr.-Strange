@@ -9,16 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ArticleSqlRepository implements ArticleRepository {
-  private SessionFactory factory;
+  private static SessionFactory factory;
 
-//    @Autowired
-//    public ArticleSqlRepository(SessionFactory factory){
-//        this.factory = factory;
-//    }
+  @Autowired
+  public ArticleSqlRepository(SessionFactory factory){
+      this.factory = factory;
+  }
   
   @Override
   public Article findById(int id) {
@@ -61,14 +63,14 @@ public class ArticleSqlRepository implements ArticleRepository {
   
   @Override
   public List<Article> listAll() {
-    List<Article> articles = new ArrayList<>();
+    Collection<Article> articles = new ArrayList<>();
     try (Session session = factory.openSession()) {
 	 session.beginTransaction();
-	 articles = session.createQuery("FROM Article").list();
+	 articles = session.createSQLQuery("SELECT * FROM Article").list();
 	 session.getTransaction().commit();
     } catch (Exception e) {
 	 System.out.println(e.getMessage());
     }
-    return articles;
+    return new ArrayList<>(articles);
   }
 }
