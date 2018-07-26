@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `drstrangedatabase` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `drstrangedatabase`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: drstrangedatabase
@@ -72,6 +74,14 @@ LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'drstrangedatabase'
+--
+
+--
+-- Dumping routines for database 'drstrangedatabase'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -82,4 +92,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-26 13:55:31
+-- Dump completed on 2018-07-26 14:03:26
