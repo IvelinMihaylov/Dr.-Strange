@@ -1,7 +1,6 @@
 package com.drstrange.drstrange.services;
 
 import com.drstrange.drstrange.data.base.ArticleRepository;
-import com.drstrange.drstrange.data.base.UserRepository;
 import com.drstrange.drstrange.models.Article;
 import com.drstrange.drstrange.services.base.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +34,6 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> listAll() {
-        return null;
+        return repository.listAll();
     }
 }
