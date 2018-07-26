@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ArticleRepository {
     Article findById(int id);
-    Article findByName(String articleTitle);
+    List<Article> findByName(String articleTitle);
     List<Article> filterBySequence(String sequence);
     List<Article> listAll();
 }

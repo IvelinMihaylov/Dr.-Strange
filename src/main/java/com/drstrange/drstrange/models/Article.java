@@ -17,6 +17,9 @@ public class Article {
   @Column (name = "author")
   private int author;
   
+  @Column (name = "topic")
+  private int topic;
+  
   @Column (name = "text")
   private String text;
   
