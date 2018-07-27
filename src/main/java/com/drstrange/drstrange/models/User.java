@@ -91,5 +91,8 @@ public class User {
     }
 
 
+    public List<Article> getArticles() {
+        return articles;
+    }
 }
 

@@ -1,6 +1,7 @@
 package com.drstrange.drstrange.data;
 
 import com.drstrange.drstrange.data.base.UserRepository;
+import com.drstrange.drstrange.models.Article;
 import com.drstrange.drstrange.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -38,7 +39,7 @@ public class UserSqlRepository implements UserRepository {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             //language=HQL
-            users = session.createNativeQuery("select u.id from user as u where u.userName=:userName AND u.passWord=:passWord", User.class)
+            users = session.createQuery("select u.id from user as u where u.userName=:userName AND u.passWord=:passWord", User.class)
                     .setParameter("userName", userName)
                     .setParameter("passWord", passWord)
                     .list();
@@ -66,5 +67,15 @@ public class UserSqlRepository implements UserRepository {
             System.out.println(ex.getMessage());
         }
         return users;
+    }
+
+    @Override
+    public void addArticle(String title, String topic , int userId, String text, byte[] image) {
+
+    }
+
+    @Override
+    public void deleteArticle(int id) {
+
     }
 }

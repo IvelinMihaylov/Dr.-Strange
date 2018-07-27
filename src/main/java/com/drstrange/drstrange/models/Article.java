@@ -14,7 +14,10 @@ public class Article {
     private String title;
 
     @Column(name = "topic")
-    private int topic;
+    private String topic;
+
+//    @Column(name = "userID", in)
+    private int userId;
 
     @Column(name = "text")
     private String text;
@@ -29,8 +32,10 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, int author, String text, byte[] image) {
+    public Article(String title, String topic , int userId, String text, byte[] image) {
         this.title = title;
+        this.topic = topic;
+        this.userId = userId;
         this.text = text;
         this.image = image;
     }
@@ -67,13 +72,12 @@ public class Article {
         this.image = image;
     }
 
-
-    public User getUser() {
-        return user;
+    public String getTopic() {
+        return topic;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 }
 

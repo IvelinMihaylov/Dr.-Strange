@@ -1,12 +1,10 @@
 package com.drstrange.drstrange.web;
 
+import com.drstrange.drstrange.models.Article;
 import com.drstrange.drstrange.models.User;
 import com.drstrange.drstrange.services.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +33,18 @@ public class UserController {
         return service.listAll();
     }
 
+    @PostMapping("/addArticle/{title}/{topic}/{text}/{image}/{userID}")
+    public void addArticle(@PathVariable("title") String title,
+                           @PathVariable("title") String topic,
+                           @PathVariable("title") String text,
+                           @PathVariable("title") String image,
+                           @PathVariable("title") String userId){
+        service.addArticle(title,topic,Integer.parseInt(userId),text,null);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteArticle(@PathVariable("id") String id){
+        service.deleteArticle(Integer.parseInt(id));
+    }
 
 }

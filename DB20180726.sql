@@ -28,13 +28,13 @@ CREATE TABLE `article` (
   `articleID` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `topic` varchar(45) DEFAULT NULL,
-  `author` int(11) DEFAULT NULL,
+  `userID` int(11) DEFAULT NULL,
   `text` longtext DEFAULT NULL,
   `image` blob DEFAULT NULL,
   PRIMARY KEY (`articleID`),
   UNIQUE KEY `articleID_UNIQUE` (`articleID`),
-  KEY `FK_USER_idx` (`author`),
-  CONSTRAINT `FK_USER` FOREIGN KEY (`author`) REFERENCES `user` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `FK_USER_idx` (`userID`),
+  CONSTRAINT `FK_USER` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
