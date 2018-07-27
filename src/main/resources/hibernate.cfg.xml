@@ -12,18 +12,19 @@
             com.mysql.jdbc.Driver
         </property>
 
-        <!-- Assume test is the database name -->
-
         <property name = "hibernate.connection.url">
             jdbc:mysql://localhost:3306/drstrangedatabase
         </property>
 
         <property name = "hibernate.connection.username">
-            dev_user
+            root
         </property>
 
         <property name = "hibernate.connection.password">
-            dev_user
+            Dimitrov970109
         </property>
+
+        <mapping class="com.drstrange.drstrange.models.User"/>
+        <mapping class="com.drstrange.drstrange.models.Article"/>
     </session-factory>
 </hibernate-configuration>

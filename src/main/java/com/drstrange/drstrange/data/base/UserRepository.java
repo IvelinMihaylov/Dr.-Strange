@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface UserRepository {
     User findById(int id);
-    User findByName(String userName);
+    User loginValidation(String userName, String passWord);
     List<User> listAll();
 }
