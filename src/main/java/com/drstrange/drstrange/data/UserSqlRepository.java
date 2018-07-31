@@ -71,11 +71,26 @@ public class UserSqlRepository implements UserRepository {
 
     @Override
     public void addArticle(String title, String topic , int userId, String text, byte[] image) {
-
+        Article article = new Article(title,topic,userId,text,image);
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.save(article);
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public void deleteArticle(int id) {
-
+        User user = null;
+        try (Session session = sessionFactory.openSession())  {
+            session.beginTransaction();
+            user = session.get(User.class, id);
+            session.delete(user);
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
