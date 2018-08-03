@@ -17,34 +17,35 @@ public class UserController {
     public UserController(UserService service) {
         this.service = service;
     }
-
-    @GetMapping("/{id}")
+    
+    @GetMapping("login/{email}/{password}")
+    public List<User> logging(@PathVariable("email") String email,
+    @PathVariable("password") String password){
+     return service.loginValidation(email,password);
+    }
+    @PostMapping("registration/{firstname}/{lastname}/{email}/{password}/{nickname}")
+    public void registration(@PathVariable("firstname") String firstname,
+                             @PathVariable("lastname") String lastname,
+                             @PathVariable("email") String email,
+                             @PathVariable("password") String password,
+                             @PathVariable("nickname") String nickname){
+        service.addUser(firstname,lastname,email,password,nickname);
+    }
+    @GetMapping("byID/{id}")
     public User findById(@PathVariable("id") String id) {
         return service.findById(Integer.parseInt(id));
     }
 
-    @GetMapping ("/{name}")
-    public User findByName(@PathVariable ("name") String name) {
+    @GetMapping ("byName/{name}")
+    public List<User> findByName(@PathVariable ("name") String name) {
         return service.findByName(name);
     }
 
-    @GetMapping ("/all")
-    public List<User> getAll() {
-        return service.listAll();
-    }
+//    @GetMapping ("/all")
+//    public List<User> getAll() {
+//        return service.listAll();
+//    }
 
-    @PostMapping("/addArticle/{title}/{topic}/{text}/{image}/{userID}")
-    public void addArticle(@PathVariable("title") String title,
-                           @PathVariable("title") String topic,
-                           @PathVariable("title") String text,
-                           @PathVariable("title") String image,
-                           @PathVariable("title") String userId){
-        service.addArticle(title,topic,Integer.parseInt(userId),text,null);
-    }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteArticle(@PathVariable("id") String id){
-        service.deleteArticle(Integer.parseInt(id));
-    }
 
 }

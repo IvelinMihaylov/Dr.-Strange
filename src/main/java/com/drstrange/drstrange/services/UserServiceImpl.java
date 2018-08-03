@@ -11,36 +11,38 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private UserRepository repository;
+  private UserRepository repository;
+  
+  @Autowired
+  public UserServiceImpl(UserRepository repository) {
+    this.repository = repository;
+  }
+  
+  
+  @Override
+  public User findById(int id) {
+    return repository.findById(id);
+  }
+  
+  @Override
+  public List<User> findByName(String userName) {
+    return repository.findByName(userName);
+  }
+  
+  @Override
+  public List<User> loginValidation(String email, String password) {
+    return repository.loginValidation(email, password);
+  }
+  
+  @Override
+  public void addUser(String firstname, String lastname, String email, String password, String nickname) {
+    repository.addUser(firstname, lastname, email, password, nickname);
+  }
 
-    @Autowired
-    public UserServiceImpl(UserRepository repository) {
-        this.repository = repository;
-    }
+//    @Override
+//    public List<User> listAll() {
+//        return repository.listAll();
+//    }
 
 
-    @Override
-    public User findById(int id) {
-        return null;
-    }
-
-    @Override
-    public User findByName(String userName) {
-        return null;
-    }
-
-    @Override
-    public List<User> listAll() {
-        return repository.listAll();
-    }
-
-    @Override
-    public void addArticle(String title, String topic, int userId, String text, byte[] image) {
-        repository.addArticle(title,topic,userId,text, image);
-    }
-
-    @Override
-    public void deleteArticle(int id) {
-        repository.deleteArticle(id);
-    }
 }

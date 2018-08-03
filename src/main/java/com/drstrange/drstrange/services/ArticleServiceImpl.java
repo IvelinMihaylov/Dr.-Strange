@@ -10,30 +10,50 @@ import java.util.List;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
-    private ArticleRepository repository;
+  private ArticleRepository repository;
+  
+  @Autowired
+  public ArticleServiceImpl(ArticleRepository repository) {
+    this.repository = repository;
+  }
 
-    @Autowired
-    public ArticleServiceImpl(ArticleRepository repository) {
-        this.repository = repository;
-    }
-
-    @Override
-    public Article findById(int id) {
-        return null;
-    }
-
-    @Override
-    public Article findByName(String articleTitle) {
-        return null;
-    }
-
-    @Override
-    public List<Article> filterBySequence(String sequence) {
-        return null;
-    }
-
-    @Override
-    public List<Article> listAll() {
-        return repository.listAll();
-    }
+//    @Override
+//    public Article findById(int id) {
+//        return null;
+//    }
+  
+  @Override
+  public List<Article> findByName(String articleTitle) {
+    return repository.findByName(articleTitle);
+  }
+  
+  @Override
+  public List<Article> filterBySequence(String sequence) {
+    return repository.filterBySequence(sequence);
+  }
+  
+  @Override
+  public List<Article> listAllArticle() {
+    return repository.listAllArticle();
+  }
+  
+  @Override
+  public List<Article> findByAuthor(int authorID) {
+    return repository.findByAuthor(authorID);
+  }
+  
+  @Override
+  public void addArticle(String title, String topic, int userId, String text, byte[] image) {
+    repository.addArticle(title, topic, userId, text, image);
+  }
+  
+  @Override
+  public void deleteArticle(int id) {
+    repository.deleteArticle(id);
+  }
+  
+  @Override
+  public void updateArticle(int id, String title, String topic, int userId, String text, byte[] image) {
+    repository.updateArticle(id,title,topic,userId,text,image);
+  }
 }

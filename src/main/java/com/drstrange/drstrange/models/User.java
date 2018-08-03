@@ -1,6 +1,7 @@
 package com.drstrange.drstrange.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,10 +13,10 @@ public class User {
     private int id;
 
     @Column(name = "firstName")
-    private String firstName;
+    private String firstname;
 
     @Column(name = "lastName")
-    private String lastName;
+    private String lastname;
 
     @Column(name = "email")
     private String email;
@@ -34,12 +35,13 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, String nickname) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String firstname, String lastname, String email, String password, String nickname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.password = password;
         this.nickname = nickname;
+        articles = new ArrayList<>();
     }
 
     public int getId() {
@@ -50,20 +52,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstName) {
+        this.firstname = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastName) {
+        this.lastname = lastName;
     }
 
     public String getEmail() {

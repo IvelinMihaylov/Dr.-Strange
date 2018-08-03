@@ -22,18 +22,18 @@ public class ArticleSqlRepository implements ArticleRepository {
       this.factory = factory;
   }
   
-  @Override
-  public Article findById(int id) {
-    Article article = null;
-    try (Session session = factory.openSession()) {
-	 session.beginTransaction();
-	 article = session.get(Article.class, id);
-	 session.getTransaction().commit();
-    } catch (SessionException ex) {
-	 System.out.println(ex.getMessage());
-    }
-    return article;
-  }
+//  @Override
+//  public Article findById(int id) {
+//    Article article = null;
+//    try (Session session = factory.openSession()) {
+//	 session.beginTransaction();
+//	 article = session.get(Article.class, id);
+//	 session.getTransaction().commit();
+//    } catch (SessionException ex) {
+//	 System.out.println(ex.getMessage());
+//    }
+//    return article;
+//  }
   
   @Override
   public List<Article> findByName(String articleTitle) {
@@ -47,7 +47,18 @@ public class ArticleSqlRepository implements ArticleRepository {
     }
     return article;
   }
-  
+  @Override
+  public List<Article> findByAuthor(int authorID) {
+    List<Article> article = null;
+    try (Session session = factory.openSession()) {
+	 session.beginTransaction();
+	 article = (session.createSQLQuery("SELECT * FROM Article WHERE authorID = '" + authorID + "'")).list();
+	 session.getTransaction().commit();
+    } catch (SessionException ex) {
+	 System.out.println(ex.getMessage());
+    }
+    return article;
+  }
   @Override
   public List<Article> filterBySequence(String sequence) {
     List<Article> articles = null;
@@ -62,7 +73,7 @@ public class ArticleSqlRepository implements ArticleRepository {
   }
   
   @Override
-  public List<Article> listAll() {
+  public List<Article> listAllArticle() {
     Collection<Article> articles = new ArrayList<>();
     try (Session session = factory.openSession()) {
 	 session.beginTransaction();
@@ -72,5 +83,44 @@ public class ArticleSqlRepository implements ArticleRepository {
 	 System.out.println(e.getMessage());
     }
     return new ArrayList<>(articles);
+  }
+  
+  
+  
+  @Override
+  public void addArticle(String title, String topic , int userId, String text, byte[] image) {
+    Article article = new Article(title,topic,userId,text,image);
+    try (Session session = factory.openSession()) {
+	 session.beginTransaction();
+	 session.save(article);
+	 session.getTransaction().commit();
+    } catch (Exception ex) {
+	 System.out.println(ex.getMessage());
+    }
+  }
+  
+  @Override
+  public void deleteArticle(int id) {
+    Article article = null;
+    try (Session session = factory.openSession())  {
+	 session.beginTransaction();
+	 article = session.get(Article.class, id);
+	 session.delete(article);
+	 session.getTransaction().commit();
+    } catch (Exception ex) {
+	 System.out.println(ex.getMessage());
+    }
+  }
+  
+  @Override
+  public void updateArticle(int id, String title, String topic, int userId, String text, byte[] image) {
+    Article article = new Article(title,topic,userId,text,image);
+    try (Session session = factory.openSession()) {
+	 session.beginTransaction();
+	 session.update(article);
+	 session.getTransaction().commit();
+    } catch (Exception ex) {
+	 System.out.println(ex.getMessage());
+    }
   }
 }

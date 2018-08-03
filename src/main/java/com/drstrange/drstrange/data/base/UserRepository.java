@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface UserRepository {
     User findById(int id);
-    User loginValidation(String userName, String passWord);
-    List<User> listAll();
-    void addArticle(String title, String topic , int userId, String text, byte[] image);
-    void deleteArticle(int id);
+    List<User> findByName(String name);
+    List<User> loginValidation(String email, String password);
+    
+    void addUser(String firstname, String lastname, String email, String password, String nickname);
+//    List<User> listAll();
+
 }
