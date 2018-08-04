@@ -52,7 +52,7 @@ public class ArticleSqlRepository implements ArticleRepository {
     List<Article> article = null;
     try (Session session = factory.openSession()) {
 	 session.beginTransaction();
-	 article = (session.createSQLQuery("SELECT * FROM Article WHERE authorID = '" + authorID + "'")).list();
+	 article = (session.createSQLQuery("SELECT * FROM Article WHERE userID = '" + authorID + "'")).list();
 	 session.getTransaction().commit();
     } catch (SessionException ex) {
 	 System.out.println(ex.getMessage());

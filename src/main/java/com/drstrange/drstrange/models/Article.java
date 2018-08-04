@@ -79,5 +79,21 @@ public class Article {
     public void setTopic(String topic) {
         this.topic = topic;
     }
+    
+    public int getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    
+    public User getUser() {
+        return user;
+    }
+    
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
 

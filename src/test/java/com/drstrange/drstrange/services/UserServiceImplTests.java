@@ -13,6 +13,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+
 @RunWith (MockitoJUnitRunner.class)
 
 public class UserServiceImplTests {
@@ -63,4 +66,5 @@ public class UserServiceImplTests {
     User result = service.findById(userID);
     Assert.assertEquals(userID,result.getId());
   }
+  
 }
