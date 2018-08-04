@@ -3,55 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Dr. Strange News</title>
-     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 </head>
 <body>
-        <nav id="nav-bar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="registration.html">Registration</a></li>
-            </ul>
-            </nav>
-    <header id="header">
-        <div class="container">
-            <h1 id="heading-logo">Doctor Strange</h1>
-            <h2 id="heading-spec">News</h2>
-        </div>
-    </header>
+<nav id="nav-bar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="registration.html">Registration</a></li>
+    </ul>
+</nav>
+<header id="header">
+    <div class="container">
+        <h1 id="heading-logo">Doctor Strange</h1>
+        <h2 id="heading-spec">News</h2>
+    </div>
+</header>
 
-    <main id="main" class="container">
-        <!-- <article class="article">
+<main id="main" class="container">
+    <!-- <article class="article">
+        <div id="article-image">
+            <img src="https://www.horniman.ac.uk/media/w650h650/img-2628.jpg" alt="">
+        </div>
+        <h3 class="article-caption">Lama</h3>
+        <p id="article-paragrape">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure esse enim commodi error placeat dicta aliquid non mollitia deserunt totam! Rem, incidunt? Laboriosam, inventore. Corrupti autem corporis voluptas voluptates alias.</p>
+    </article>
+    <article class="article">
             <div id="article-image">
-                <img src="https://www.horniman.ac.uk/media/w650h650/img-2628.jpg" alt="">
+                <img src="https://jasmin.bg/wp-content/media/2017/01/animal-selfie-3.jpg" alt="">
             </div>
-            <h3 class="article-caption">Lama</h3>
+            <h3 class="article-caption">Cat & Dogs</h3>
             <p id="article-paragrape">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure esse enim commodi error placeat dicta aliquid non mollitia deserunt totam! Rem, incidunt? Laboriosam, inventore. Corrupti autem corporis voluptas voluptates alias.</p>
-        </article>
-        <article class="article">
-                <div id="article-image">
-                    <img src="https://jasmin.bg/wp-content/media/2017/01/animal-selfie-3.jpg" alt="">
-                </div>
-                <h3 class="article-caption">Cat & Dogs</h3>
-                <p id="article-paragrape">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure esse enim commodi error placeat dicta aliquid non mollitia deserunt totam! Rem, incidunt? Laboriosam, inventore. Corrupti autem corporis voluptas voluptates alias.</p>
-        </article> -->
-        <script>
-            $.get("/api/article/all", function (article) {
-                article.forEach(function (art) {
-                    $("<div/>")
-                        .html(art)
-                        .appendTo("#main");
-                });
+    </article> -->
+    <script>
+        $.get("/api/article/all", function (article) {
+            article.forEach(function (art) {
+                $("<div/>")
+                    .html(art)
+                    .appendTo("#main");
             });
-        </script>
-    </main>
-    <footer id="footer">
-        <p>Copying &copy; 2018</p>
-    </footer>
-    <!--<script src="../scripts/script.js"></script>-->
+        });
+    </script>
+</main>
+<footer id="footer">
+    <p>Copying &copy; 2018</p>
+</footer>
+<!--<script src="../scripts/script.js"></script>-->
 </body>
 </html>
