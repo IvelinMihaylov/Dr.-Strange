@@ -21,10 +21,29 @@
     </header>
 
     <main id="main" class="container">
+        <form action="/api/user/registration" method="post">
+            <label for="firstname">Name:</label>
+            <input path = "firstname" type="text" name="firstname" id="firstname">
+
+            <label for="lastname">Family name:</label>
+            <input path = "lastname" type="text" name="lastname" id="lastname">
+
+            <label for="email">Email address:</label>
+            <input path = "email" type="email" name="email" id="email">
+
+            <label for="password">Password</label>
+            <input path = "password" type="password" name="password" id="password">
+
+            <label for="nickname">nickname</label>
+            <input path = "nickname" type="text" name="nickname" id="nickname">
+            
+            <input type="submit" value="Submit">
+        </form>
 
     </main>
     <footer id="footer">
         <p>Copying &copy; 2018</p>
     </footer>
+    <script src="../scripts/registration-script.js"></script>
 </body>
 </html>

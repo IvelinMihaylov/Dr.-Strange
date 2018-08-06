@@ -4,6 +4,7 @@ import com.drstrange.drstrange.models.Article;
 import com.drstrange.drstrange.models.User;
 import com.drstrange.drstrange.services.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,13 +24,10 @@ public class UserController {
     @PathVariable("password") String password){
      return service.loginValidation(email,password);
     }
-    @PostMapping("registration/{firstname}/{lastname}/{email}/{password}/{nickname}")
-    public void registration(@PathVariable("firstname") String firstname,
-                             @PathVariable("lastname") String lastname,
-                             @PathVariable("email") String email,
-                             @PathVariable("password") String password,
-                             @PathVariable("nickname") String nickname){
-        service.addUser(firstname,lastname,email,password,nickname);
+    
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public void addUser(@ModelAttribute("User")User user ){
+        service.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getNickname());
     }
     @GetMapping("byID/{id}")
     public User findById(@PathVariable("id") String id) {
