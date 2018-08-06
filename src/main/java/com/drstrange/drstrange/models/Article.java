@@ -87,13 +87,13 @@ public class Article {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-    
-    public User getUser() {
-        return user;
-    }
-    
-    public void setUser(User user) {
-        this.user = user;
-    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }
 

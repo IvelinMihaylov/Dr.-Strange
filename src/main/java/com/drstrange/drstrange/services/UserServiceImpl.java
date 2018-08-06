@@ -39,10 +39,10 @@ public class UserServiceImpl implements UserService {
     repository.addUser(firstname, lastname, email, password, nickname);
   }
 
-//    @Override
-//    public List<User> listAll() {
-//        return repository.listAll();
-//    }
+    @Override
+    public List<User> listAll() {
+        return repository.listAll();
+    }
 
 
 }
