@@ -14,7 +14,7 @@ public interface UserService {
     List<User> loginValidation(String email, String password);
     
     void addUser(String firstname, String lastname, String email, String password, String nickname);
-    List<User> listAll();
+//    List<User> listAll();
 
 
 }

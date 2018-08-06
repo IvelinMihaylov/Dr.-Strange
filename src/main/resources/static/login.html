@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dr. Strange News</title>
-     <link rel="stylesheet" href="./css/style.css">
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script>
-        $("#submit").on("click", function () {
-            window.location ="index.html";
-        });
-    </script>
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
 </head>
 <body>
         <nav id="nav-bar">
@@ -33,15 +24,15 @@
             <section id="login-view">
                     <form action="/api/user/login/" method="get" modelAttribute="user">
                         <label for="email">Email:</label>
-                        <input id = "loginUserName" type="email" name="email" id="email">
+                        <input type="email" name="email" id="email">
                         <label for="password">Password:</label>
-                        <input id = "loginPassword" type="password" name="password" id="password">
-                        <input id="submit" type="submit" value="Login">
+                        <input type="password" name="password" id="password">
+                        <input type="submit" value="Login">
                     </form>
                 </section>
     </main>
     <footer id="footer">
-        <p>Copyright&copy; S.H.I.E.L.D. 2018</p>
+        <p>Copying &copy; 2018</p>
     </footer>
 
 </body>
