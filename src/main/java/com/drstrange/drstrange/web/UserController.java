@@ -1,11 +1,15 @@
 package com.drstrange.drstrange.web;
 
 import com.drstrange.drstrange.models.Article;
+import com.drstrange.drstrange.models.EmailAndPassword;
 import com.drstrange.drstrange.models.User;
 import com.drstrange.drstrange.services.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -18,11 +22,16 @@ public class UserController {
         this.service = service;
     }
     
-    @GetMapping("login/{email}/{password}")
-    public List<User> logging(@PathVariable("email") String email,
-    @PathVariable("password") String password){
-     return service.loginValidation(email,password);
+    @GetMapping("/login")
+    public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = new ModelAndView("login");
+        mav.addObject("login", new EmailAndPassword());
+
+        return mav;
     }
+
+
+
     @PostMapping("registration/{firstname}/{lastname}/{email}/{password}/{nickname}")
     public void registration(@PathVariable("firstname") String firstname,
                              @PathVariable("lastname") String lastname,
