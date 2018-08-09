@@ -16,7 +16,7 @@ public class Article {
     @Column(name = "topic")
     private String topic;
     
-    @Column(name = "userID")
+    @Column(name = "userID", insertable = false, updatable = false)
     private int userId;
     
     @Column(name = "text")
@@ -25,9 +25,9 @@ public class Article {
     @Column(name = "image")
     private String image;
 
-//    @ManyToOne
-//    @JoinColumn(name = "userID", nullable = false)
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "userID", nullable = false)
+    private User user;
     
     public Article() {
     }

@@ -1,11 +1,15 @@
 package com.drstrange.drstrange.web;
 
-import com.drstrange.drstrange.models.EmailAndPassword;
 import com.drstrange.drstrange.models.User;
+import com.drstrange.drstrange.models.UserDetails;
 import com.drstrange.drstrange.services.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,14 +26,36 @@ public class UserRestController {
     }
     
     @GetMapping ("/login")
-    public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
-        ModelAndView mav = new ModelAndView("login");
-        mav.addObject("login", new EmailAndPassword());
-        
-        return mav;
+    public String showLogin(Model model){
+        model.addAttribute("/login");
+        return "base-layout";
     }
     
-    
+    @GetMapping("/logout")
+    public String logoutPage (HttpServletRequest request, HttpServletResponse response){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request,response,auth);
+        }
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/profile")
+    @PreAuthorize("isAuthenticated()")
+    public String profilePage(Model model){
+        UserDetails principal = (UserDetails) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        User user = this.service.loginValidation(principal.getEmail(),principal.getPassword());
+
+        model.addAttribute("user", user);
+        model.addAttribute("view", "/profil");
+
+        return "base-layout";
+    }
     
     @PostMapping ("registration/{firstname}/{lastname}/{email}/{password}/{nickname}")
     public void registration(@PathVariable ("firstname") String firstname,

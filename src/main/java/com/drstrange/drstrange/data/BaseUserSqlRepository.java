@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class UserSqlRepository implements UserRepository {
+public class BaseUserSqlRepository implements UserRepository {
   private static SessionFactory factory;
   
   @Autowired
-  public UserSqlRepository(SessionFactory factory) {
+  public BaseUserSqlRepository(SessionFactory factory) {
     this.factory = factory;
   }
   
@@ -37,7 +37,7 @@ public class UserSqlRepository implements UserRepository {
     List<User> users = null;
     try (Session session = factory.openSession()) {
 	 session.beginTransaction();
-	 users = (session.createSQLQuery("SELECT * FROM user WHERE firstName = '" + name + "';")).list();
+	 users = (List<User>) (session.createSQLQuery("SELECT * FROM user WHERE firstName = '" + name + "';")).getResultList().get(0);
 	 session.getTransaction().commit();
     } catch (SessionException ex) {
 	 System.out.println(ex.getMessage());
@@ -46,7 +46,7 @@ public class UserSqlRepository implements UserRepository {
   }
   
   @Override
-  public List<User> loginValidation(String email, String password) {
+  public User loginValidation(String email, String password) {
     List<User> users = null;
     try (Session session = factory.openSession()) {
 	 session.beginTransaction();
@@ -60,7 +60,7 @@ public class UserSqlRepository implements UserRepository {
 //    System.out.println(users.get(0).getFirstname() +" "+ users.get(0).getLastname());}
 //    else
 //	 System.out.println("no match");
-    return users;
+    return users.get(0);
   }
   
   @Override
