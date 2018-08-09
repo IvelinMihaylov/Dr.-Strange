@@ -27,8 +27,8 @@ public class UserRestController {
     
     @GetMapping ("/login")
     public String showLogin(Model model){
-        model.addAttribute("/login");
-        return "base-layout";
+        model.addAttribute("view", "user/login");
+        return "templates/base-layout";
     }
     
     @GetMapping("/logout")
@@ -39,7 +39,7 @@ public class UserRestController {
             new SecurityContextLogoutHandler().logout(request,response,auth);
         }
 
-        return "redirect:/";
+        return "redirect:user/login?logout";
     }
 
     @GetMapping("/profile")
@@ -52,28 +52,28 @@ public class UserRestController {
         User user = this.service.loginValidation(principal.getEmail(),principal.getPassword());
 
         model.addAttribute("user", user);
-        model.addAttribute("view", "/profil");
+        model.addAttribute("view", "user/profile");
 
-        return "base-layout";
+        return "templates/base-layout";
     }
-    
-    @PostMapping ("registration/{firstname}/{lastname}/{email}/{password}/{nickname}")
-    public void registration(@PathVariable ("firstname") String firstname,
-                             @PathVariable ("lastname") String lastname,
-                             @PathVariable ("email") String email,
-                             @PathVariable ("password") String password,
-                             @PathVariable ("nickname") String nickname){
-        service.addUser(firstname,lastname,email,password,nickname);
-    }
-    @GetMapping ("byID/{id}")
-    public User findById(@PathVariable ("id") String id) {
-        return service.findById(Integer.parseInt(id));
-    }
-    
-    @GetMapping ("byName/{name}")
-    public List<User> findByName(@PathVariable ("name") String name) {
-        return service.findByName(name);
-    }
+//
+//    @PostMapping ("registration/{firstname}/{lastname}/{email}/{password}/{nickname}")
+//    public void registration(@PathVariable ("firstname") String firstname,
+//                             @PathVariable ("lastname") String lastname,
+//                             @PathVariable ("email") String email,
+//                             @PathVariable ("password") String password,
+//                             @PathVariable ("nickname") String nickname){
+//        service.addUser(firstname,lastname,email,password,nickname);
+//    }
+//    @GetMapping ("byID/{id}")
+//    public User findById(@PathVariable ("id") String id) {
+//        return service.findById(Integer.parseInt(id));
+//    }
+//
+//    @GetMapping ("byName/{name}")
+//    public List<User> findByName(@PathVariable ("name") String name) {
+//        return service.findByName(name);
+//    }
 
 //    @GetMapping ("/all")
 //    public List<User> getAll() {

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+    <div class="container body-container">
+        <div class="row">
+            <div id="main" class="col-sm-9">
+                <div>
+                    <span th:text="${user.lastName}"></span>
+                    <br/>
+                    <span th:text="${user.nickName}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
