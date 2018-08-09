@@ -14,9 +14,9 @@ public interface ArticleService {
   
   List<Article> findByAuthor(int authorID);
   
-  void addArticle(String title, String topic , int userId, String text, byte[] image);
+  void addArticle(String title, String topic, int userId, String text, String image);
   
   void deleteArticle(int id);
   
-  void updateArticle(int id, String title, String topic , int userId, String text, byte[] image);
+  void updateArticle(int id, String title, String topic, int userId, String text, String image);
 }

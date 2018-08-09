@@ -1,7 +1,6 @@
 package com.drstrange.drstrange.services;
 
 import com.drstrange.drstrange.data.base.UserRepository;
-import com.drstrange.drstrange.models.Article;
 import com.drstrange.drstrange.models.User;
 import com.drstrange.drstrange.services.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

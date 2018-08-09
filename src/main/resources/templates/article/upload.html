@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+
+<body>
+    <form action="#" th:action="@{/article/upload/}" th:object="${article}" method="post">
+        <input type="text" th:field="*{title}">
+        <input type="text" th:field="*{topic}">
+        <input type="number" th:field="*{userId}">
+        <textarea type="text" th:field="*{text}"/>
+        <input type="text" th:field="*{image}">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+
+</html>

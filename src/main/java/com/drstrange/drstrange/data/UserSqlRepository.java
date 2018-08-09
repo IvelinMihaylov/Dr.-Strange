@@ -1,7 +1,6 @@
 package com.drstrange.drstrange.data;
 
 import com.drstrange.drstrange.data.base.UserRepository;
-import com.drstrange.drstrange.models.Article;
 import com.drstrange.drstrange.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionException;
@@ -9,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository

@@ -43,7 +43,7 @@ public class ArticleServiceImpl implements ArticleService {
   }
   
   @Override
-  public void addArticle(String title, String topic, int userId, String text, byte[] image) {
+  public void addArticle(String title, String topic, int userId, String text, String image) {
     repository.addArticle(title, topic, userId, text, image);
   }
   
@@ -53,7 +53,7 @@ public class ArticleServiceImpl implements ArticleService {
   }
   
   @Override
-  public void updateArticle(int id, String title, String topic, int userId, String text, byte[] image) {
+  public void updateArticle(int id, String title, String topic, int userId, String text, String image) {
     repository.updateArticle(id,title,topic,userId,text,image);
   }
 }

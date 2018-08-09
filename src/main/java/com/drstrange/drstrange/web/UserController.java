@@ -1,60 +1,37 @@
 package com.drstrange.drstrange.web;
 
-import com.drstrange.drstrange.models.Article;
-import com.drstrange.drstrange.models.EmailAndPassword;
 import com.drstrange.drstrange.models.User;
 import com.drstrange.drstrange.services.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-
-@RestController
-@RequestMapping("/api/user")
+@Controller
+@RequestMapping ("/user")
 public class UserController {
-    private UserService service;
-
-    @Autowired
-    public UserController(UserService service) {
-        this.service = service;
-    }
-    
-    @GetMapping("/login")
-    public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
-        ModelAndView mav = new ModelAndView("login");
-        mav.addObject("login", new EmailAndPassword());
-
-        return mav;
-    }
-
-
-
-    @PostMapping("registration/{firstname}/{lastname}/{email}/{password}/{nickname}")
-    public void registration(@PathVariable("firstname") String firstname,
-                             @PathVariable("lastname") String lastname,
-                             @PathVariable("email") String email,
-                             @PathVariable("password") String password,
-                             @PathVariable("nickname") String nickname){
-        service.addUser(firstname,lastname,email,password,nickname);
-    }
-    @GetMapping("byID/{id}")
-    public User findById(@PathVariable("id") String id) {
-        return service.findById(Integer.parseInt(id));
-    }
-
-    @GetMapping ("byName/{name}")
-    public List<User> findByName(@PathVariable ("name") String name) {
-        return service.findByName(name);
-    }
-
-//    @GetMapping ("/all")
-//    public List<User> getAll() {
-//        return service.listAll();
-//    }
-
-
-
+  
+  private final UserService userService;
+  
+  @Autowired
+  public UserController(UserService userService) {
+    this.userService = userService;
+  }
+  
+  @GetMapping ("/upload")
+  public String articleUpload(Model model) {
+    model.addAttribute("title", "User upload");
+    model.addAttribute("user", new User());
+    return "user/upload";
+  }
+  
+  @PostMapping ("/upload")
+  public String articleSubmit(@ModelAttribute User user) {
+    userService.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getNickname());
+    return "index";
+  }
+  
 }

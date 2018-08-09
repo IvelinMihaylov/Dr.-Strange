@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Dr. Strange News</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav id="nav-bar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="../static/login.html">Login</a></li>
+        <li><a href="../static/registration.html">Registration</a></li>
+    </ul>
+</nav>
+<header id="header">
+    <div class="container">
+        <h1 id="heading-logo">Doctor Strange</h1>
+        <h2 id="heading-spec">News</h2>
+    </div>
+</header>
+
+<main id="main" class="container">
+
+    <article th:each="article: ${article}">
+            <img th:src="${article.image}"/>
+            <h3 th:text="${article.title}"></h3>
+            <h4 th:text="${article.topic}"></h4>
+            <pre th:text="${article.text}"></pre>
+            <!--<h3 th:text="${article.userID}"></h3>-->
+    </article>
+</main>
+<footer id="footer">
+    <p>Copying &copy; 2018</p>
+</footer>
+<!-- <script src="../scripts/script.js"></script> -->
+</body>
+</html>

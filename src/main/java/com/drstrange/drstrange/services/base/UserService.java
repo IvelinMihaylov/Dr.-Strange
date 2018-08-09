@@ -1,6 +1,5 @@
 package com.drstrange.drstrange.services.base;
 
-import com.drstrange.drstrange.models.Article;
 import com.drstrange.drstrange.models.User;
 
 import java.util.List;

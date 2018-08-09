@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+
+<body>
+    <form action="#" th:action="@{/user/upload/}" th:object="${user}" method="post">
+        <input type="text" th:field="*{firstname}">
+        <input type="text" th:field="*{lastname}">
+        <input type="password" th:field="*{password}">
+        <input type="email" th:field="*{email}">
+        <input type="nickname" th:field="*{nickname}">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+
+</html>
